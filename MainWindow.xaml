@@ -1,0 +1,92 @@
+﻿<Window x:Class="SymCrypt.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SymCrypt"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.Resources>
+            <Style TargetType="ComboBox">
+                <Setter Property="Margin" Value="5,5,5,10" />
+                <Setter Property="Width" Value="150" />
+            </Style>
+            <Style TargetType="TextBlock">
+                <Setter Property="Margin" Value="5,5" />
+            </Style>
+            <Style TargetType="TextBox">
+                <Setter Property="Margin" Value="5,5" />
+            </Style>
+            <Style TargetType="CheckBox">
+                <Setter Property="Margin" Value="5,10" />
+                <Setter Property="Width" Value="150" />
+            </Style>
+            <Style TargetType="Button">
+                <Setter Property="Margin" Value="5,10" />
+                <Setter Property="Width" Value="150" />
+            </Style>
+        </Grid.Resources>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackPanel>
+            <ComboBox Name="selection_box">
+                <ComboBoxItem IsSelected="True">DES</ComboBoxItem>
+                <ComboBoxItem>3DES</ComboBoxItem>
+                <ComboBoxItem>Rijndael</ComboBoxItem>
+            </ComboBox>
+            <Button Click="Encrypt">Encrypt</Button>
+            <Button Click="Decrypt">Decrypt</Button>
+        </StackPanel>
+        
+        <StackPanel Grid.Column="2">
+            <TextBlock>Key</TextBlock>
+            <TextBox Name="key_box" />
+            <TextBlock>IV</TextBlock>
+            <TextBox Name="IV_box" />
+            <TextBlock>Plaintext</TextBlock>
+            
+            <DockPanel>
+                <StackPanel>
+                    <TextBlock>ASCII</TextBlock>
+                    <TextBlock>HEX</TextBlock>
+                </StackPanel>
+                <StackPanel>
+                    <TextBox Name="ascii_plaintext" />
+                    <TextBox Name="hex_plaintext" IsReadOnly="True" />
+                </StackPanel>
+            </DockPanel>
+            <TextBlock>Ciphertext</TextBlock>
+            <DockPanel>
+                <StackPanel>
+                    <TextBlock>ASCII</TextBlock>
+                    <TextBlock>HEX</TextBlock>
+                </StackPanel>
+                <StackPanel>
+                    <TextBox Name="ascii_encrypted" IsReadOnly="True" />
+                    <TextBox Name="hex_encrypted" IsReadOnly="True" />
+                </StackPanel>
+            </DockPanel>
+            <TextBlock>Decrypted text</TextBlock>
+            <DockPanel>
+                <StackPanel>
+                    <TextBlock>ASCII</TextBlock>
+                    <TextBlock>HEX</TextBlock>
+                </StackPanel>
+                <StackPanel>
+                    <TextBox Name="ascii_decrypted" IsReadOnly="True" />
+                    <TextBox Name="hex_decrypted" IsReadOnly="True" />
+                </StackPanel>
+            </DockPanel>
+            <TextBlock>Encryption time: <TextBlock Name="encryption_time" Margin="5,0" /> ms</TextBlock>
+            <TextBlock>Decryption time: <TextBlock Name="decryption_time" Margin="5,0" /> ms</TextBlock>
+        </StackPanel>
+    </Grid>
+</Window>
